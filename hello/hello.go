@@ -2,8 +2,10 @@ package main
 
 import "fmt"
 
-import "rsc.io/quote"
+import "go-tutorial/greetings"
 
 func main() {
-    fmt.Println(quote.Go())
+    // Get a greeting message and print it.
+    message := greetings.Hello("Gladys")
+    fmt.Println(message)
 }
