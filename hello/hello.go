@@ -1,11 +1,27 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "log"
 
-import "go-tutorial/greetings"
+    "go-tutorial/greetings"
+)
 
 func main() {
-    // Get a greeting message and print it.
-    message := greetings.Hello("Gladys")
-    fmt.Println(message)
+    // Set properties of the predefined Logger, including
+    // the log entry prefix and a flag to disable printing
+    // the time, source file, and line number.
+    log.SetPrefix("greetings: ")
+    log.SetFlags(0)
+
+    names := []string{"Gladys", "Samantha", "Darrin"}
+
+    // Request greeting messages for the names.
+    messages, err := greetings.Hellos(names)
+    if err != nil {
+        log.Fatal(err)
+    }
+    // If no error was returned, print the returned map of
+    // messages to the console.
+    fmt.Println(messages)
 }
